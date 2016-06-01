@@ -31,6 +31,10 @@
 
 #include <string.h>
 
+#if defined(__CYGWIN__)
+#include <sys/select.h>
+#endif
+
 typedef struct aeApiState {
     fd_set rfds, wfds;
     /* We need to have a copy of the fd sets as it's not safe to reuse
