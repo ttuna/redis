@@ -72,7 +72,7 @@
 #endif
 
 /* Test for polling API */
-#ifdef __linux__
+#if defined(__linux__)
 #define HAVE_EPOLL 1
 #endif
 

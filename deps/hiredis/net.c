@@ -138,7 +138,7 @@ int redisKeepAlive(redisContext *c, int interval) {
         return REDIS_ERR;
     }
 #else
-#ifndef __sun
+#if !defined(__sun) && !defined(__CYGWIN__)
     val = interval;
     if (setsockopt(fd, IPPROTO_TCP, TCP_KEEPIDLE, &val, sizeof(val)) < 0) {
         __redisSetError(c,REDIS_ERR_OTHER,strerror(errno));
